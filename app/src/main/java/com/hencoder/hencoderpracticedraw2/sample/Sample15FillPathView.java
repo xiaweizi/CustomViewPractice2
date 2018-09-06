@@ -2,6 +2,7 @@ package com.hencoder.hencoderpracticedraw2.sample;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.support.annotation.Nullable;
@@ -49,37 +50,14 @@ public class Sample15FillPathView extends View {
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         paint.setStrokeWidth(0);
         paint.getFillPath(path, path1);
+        paint.setColor(Color.RED);
         canvas.drawPath(path, paint);
 
         canvas.save();
-        canvas.translate(500, 0);
-        canvas.drawPath(path1, pathPaint);
+        canvas.translate(0, 120);
+        pathPaint.setColor(Color.GREEN);
+        canvas.drawPath(path, pathPaint);
         canvas.restore();
 
-        canvas.save();
-        canvas.translate(0, 200);
-        paint.setStyle(Paint.Style.STROKE);
-        // 第二处：设置 Style 为 STROKE 后再获取 Path
-        paint.getFillPath(path, path2);
-        canvas.drawPath(path, paint);
-        canvas.restore();
-
-        canvas.save();
-        canvas.translate(500, 200);
-        canvas.drawPath(path2, pathPaint);
-        canvas.restore();
-
-        canvas.save();
-        canvas.translate(0, 400);
-        paint.setStrokeWidth(40);
-        // 第三处：Style 为 STROKE 并且线条宽度为 40 时的 Path
-        paint.getFillPath(path, path3);
-        canvas.drawPath(path, paint);
-        canvas.restore();
-
-        canvas.save();
-        canvas.translate(500, 400);
-        canvas.drawPath(path3, pathPaint);
-        canvas.restore();
     }
 }
